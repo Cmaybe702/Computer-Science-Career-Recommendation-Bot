@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    
+ <topic name="DATASA">
+    <category>
+        <pattern>^ YES ^</pattern>
+        <template>Do you enjoy creating programs?
+        <think><set name="topic">PROGRAMMING</set></think></template>
+    </category>
+    <category>
+        <pattern>^ NO ^</pattern>
+        <template>Do you have excellent organization skills?
+        <think><set name="topic">ORGANIZATION</set>
+        <set name="dataStruct">NO</set>
+        <set name="transferredOrg">YES</set>
+        </think></template>
+    </category>
+    <category>
+    <pattern>^ MAYBE ^</pattern>
+        <template>Do you enjoy creating programs?
+        <think><set name="topic">PROGRAMMING</set></think></template>
+    </category>
+    <category>
+        <pattern>*</pattern>
+        <template>Are you proficient with data structures and algorithms? (Please answer YES, NO, or MAYBE)</template>
+    </category> 
+ </topic>
+ 
+  <topic name="PROGRAMMING">
+    <category>
+        <pattern>^ YES ^</pattern>
+        <template>Are you comfortable with deriving user needs from requirements?
+        <think><set name="topic">REQUIREMENTS</set>
+        <set name="programming">YES</set></think></template>
+    </category>
+    <category>
+        <pattern>^ NO ^</pattern>
+        <template>Can you efficiently update software and operating systems?
+        <think><set name="topic">UPDATES</set>
+        <set name="programming">NO</set></think></template>
+    </category>
+    <category>
+    <pattern>^ MAYBE ^</pattern>
+        <template>Are you comfortable with deriving user needs from requirements?
+        <think><set name="topic">REQUIREMENTS</set></think></template>
+    </category>
+    <category>
+        <pattern>*</pattern>
+        <template>Do you enjoy creating programs? (Please answer YES, NO, or MAYBE)</template>
+    </category> 
+ </topic>
+    
+  <topic name="REQUIREMENTS">
+    <category>
+        <pattern>^ YES ^</pattern>
+        <template>Do you understand the fundamentals of quality assurance?
+        <think><set name="topic">TESTING</set></think></template>
+    </category>
+    <category>
+        <pattern>^ NO ^</pattern>
+        <template>
+            <condition name="transferredSd">
+                <li value="YES">Do you understand the fundamentals of quality assurance?
+                        <think><set name="topic">TESTING</set></think></li>
+                <li>Are you comfortable working in a high stress environment?
+                        <think><set name="topic">HIGHSTRESS</set></think></li>
+            </condition>
+        </template>
+    </category>
+    <category>
+        <pattern>^ MAYBE ^</pattern>
+        <template>Do you understand the fundamentals of quality assurance?
+        <think><set name="topic">TESTING</set></think></template>
+    </category>
+    <category>
+        <pattern>*</pattern>
+        <template>Are you comfortable with deriving user needs from requirements? (Please answer YES, NO, or MAYBE)</template>
+    </category> 
+ </topic>
+ 
+ <topic name="TESTING">
+    <category>
+        <pattern>^ YES ^</pattern>
+        <template>Based on what we discussed; you are a good match for a career in Software Development!
+        <think><set name="topic">RECOMMENDED</set>
+        <set name="recommended">Software Developer</set></think></template>
+    </category>
+    <category>
+        <pattern>^ MAYBE ^</pattern>
+        <template>Based on what we discussed; you are a good match for a career in Software Development!
+        <think><set name="topic">RECOMMENDED</set>
+        <set name="recommended">Software Developer</set></think></template>
+    </category>
+    <category>
+        <pattern>^ NO ^</pattern>
+        <template>Do you have excellent organization skills?
+        <think><set name="topic">ORGANIZATION</set>
+        <set name="testing">NO</set>
+        <set name="transferredOrg">YES</set></think>
+        </template>
+    </category>
+    <category>
+        <pattern>*</pattern>
+        <template>Do you understand the fundamentals of quality assurance? (Please answer YES, NO, or MAYBE)</template>
+    </category> 
+ </topic>
+
+</aiml>
