@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    
+ <topic name="DATABASE">
+    <category>
+        <pattern>^ YES ^</pattern>
+        <template>Are you familiar with backup and restore procedures?
+        <think><set name="topic">BACKUP</set></think></template>
+    </category>
+    <category>
+        <pattern>^ NO ^</pattern>
+        <template>
+            <condition name="transferredOrg">
+                <li value="YES">Are you proficient in analyzing risk?
+                    <think><set name="topic">RISKANALYSIS</set>
+                    <set name="transferredITAn">YES</set></think></li>
+                <li>Do you enjoy debugging programs?
+                        <think><set name="topic">DEBUGGING</set>
+                        <set name="transferredDebug">YES</set></think></li>
+            </condition>
+        </template>
+    </category>
+    <category>
+        <pattern>^ MAYBE ^</pattern>
+        <template>Are you familiar with backup and restore procedures?
+        <think><set name="topic">BACKUP</set></think></template>
+    </category>
+    <category>
+        <pattern>*</pattern>
+        <template>Would you enjoy creating and maintaining databases? (Please answer YES, NO, or MAYBE)</template>
+    </category>
+ </topic>
+ 
+ <topic name="BACKUP">
+    <category>
+        <pattern>^ YES ^</pattern>
+        <template>Are you comfortable using the Linux OS?
+        <think><set name="topic">LINUX</set></think></template>
+    </category>
+    <category>
+        <pattern>^ NO ^</pattern>
+        <template>
+            <condition name="transferredOrg">
+                <li value="YES">Are you proficient in analyzing risk?
+                    <think><set name="topic">RISKANALYSIS</set>
+                    <set name="transferredDebug">YES</set></think></li>
+                <li>Do you enjoy debugging programs?
+                        <think><set name="topic">DEBUGGING</set>
+                        <set name="transferredDebug">YES</set></think></li>
+            </condition>
+        </template>
+    </category>
+    <category>
+        <pattern>^ MAYBE ^</pattern>
+        <template>Are you comfortable using the Linux OS?
+        <think><set name="topic">LINUX</set></think></template>
+    </category>
+    <category>
+        <pattern>*</pattern>
+        <template>Would you enjoy creating and maintaining databases? (Please answer YES, NO, or MAYBE)</template>
+    </category>
+ </topic>
+ 
+ <topic name="LINUX">
+    <category>
+        <pattern>^ YES ^</pattern>
+        <template>Do you enjoy programming in SQL?
+        <think><set name="topic">SQL</set></think></template>
+    </category>
+    <category>
+        <pattern>^ NO ^</pattern>
+        <template>
+            <condition name="programming">
+                <li value="NO">Are you proficient in analyzing risk?
+                    <think><set name="topic">RISKANALYSIS</set>
+                    <set name="transferredITAn">YES</set></think></li>
+                <li> Do you enjoy creating programs?
+                    <think><set name="topic">PROGRAMMING</set>
+                    <set name="transferredDebug">YES</set></think></li>
+            </condition>
+        </template>
+    </category>
+    <category>
+        <pattern>^ MAYBE ^</pattern>
+        <template>Do you enjoy programming in SQL?
+        <think><set name="topic">SQL</set></think></template>
+    </category>
+    <category>
+        <pattern>*</pattern>
+        <template>Are you comfortable using the Linux OS? (Please answer YES, NO, or MAYBE)</template>
+    </category>
+ </topic>
+ 
+ <topic name="SQL">
+        <category>
+        <pattern>^ YES ^</pattern>
+        <template> Based on what we discussed, you are a good match for a career in Database Administration!
+            <think><set name="topic">RECOMMENDED</set>
+            <set name="recommended">Database Administrator</set></think></template>
+    </category>
+    <category>
+        <pattern>^ NO ^</pattern>
+        <template> Can you efficiently update software and operating systems?
+            <think><set name="topic">UPDATES</set>
+                <set name="transferredNet">YES</set></think>
+        </template>
+    </category>
+    <category>
+        <pattern>^ MAYBE ^</pattern>
+        <template> Can you efficiently update software and operating systems?
+            <think><set name="topic">UPDATES</set>
+                <set name="transferredNet">YES</set></think>
+        </template>
+    </category>
+    <category>
+        <pattern>*</pattern>
+        <template>Do you enjoy programming in SQL? (Please answer YES, NO, or MAYBE)</template>
+    </category> 
+ </topic>
+</aiml>
